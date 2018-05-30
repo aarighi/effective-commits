@@ -1,5 +1,5 @@
 
-![[consenta.me](https://consenta.me) logo](consentame/src/main/res/drawable/consentame_logo.png)
+![[consenta.me](https://consenta.me) logo](img/consentame_logo.png)
 
 # consenta-android
 **Android plugin for [consenta.me](https://consenta.me).** Created May 2018 by Andrea Arighi <[andrea@chino.io](mailto:andrea@chino.io)>
@@ -19,16 +19,25 @@ and *Data Controllers* in an easy way. Once created, the Consent will be identif
 ### Install the Android library
 *Instructions below are for* ***Android Studio 3.x*** *and* ***Android Gradle plugin 3.*** *The minimum supported SDK version is* **API 22 (Android 5.1)**
 
-1. Clone this repository and get the `consenta-android.aar` archive -  you should find it inside the `consentame/AAR` folder.
-2. Open your project in Android Studio
-3. Go to **File > New > New Module...** and choose **Import .JAR/.AAR Package**.
-Write in the full path to `consentame/AAR/consentame-android.aar` archive and the module name (*consentame*)
-4. After the import, open the `build.gradle` file for the application where you want to use the Consenta.me plugin;
-add the *consentame* module as a dependency:
+You can get the Consenta.me Android plugin via [jitpack](jitpack.io).
+
+You need to edit your app's `build.gradle` file; add the maven repository URL:
+
+```
+allprojects {
+		repositories {
+			// other repositories . . .
+			maven { url 'https://jitpack.io' }
+		}
+	}
+```
+
+and the dependency:
+
 ```
 dependencies {
-    . . .
-    implementation project(':consentame')
+    // other dependencies . . . 
+    implementation 'com.github.jitpack:android-example:1.0.1'
 }
 ```
 
@@ -111,7 +120,7 @@ You can now insert the `ConsentaMeCheckButton` in your Activities:
 * **You may not:**
     * Have more than one screen with Consent details running at a time. The user must approve a Consent (or exit the details screen)
     before opening another Consent.
-    * Insert Views inside the button's layout (even though the `ConsentaMeCheckButton` is subclass of `RelativeLayout`).
+    * Insert Views inside the button's layout (even though the `ConsentaMeCheckButton` is a `Layout`).
     * Change the code of the library and/or the behaviour of any of its classes.
 
 * **You may:**
